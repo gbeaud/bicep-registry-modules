@@ -39,12 +39,9 @@ The following section provides usage examples for the module, which were used to
 
 >**Note**: To reference the module, please use the following syntax `br/public:avm/ptn/azd/container-apps-stack:<version>`.
 
-- [With zoneRedundant enabled](#example-1-with-zoneredundant-enabled)
+- [Zone-Redundant](#example-1-zone-redundant)
 
-### Example 1: _With zoneRedundant enabled_
-
-This instance deploys the module with zoneRedundant enabled.
-
+### Example 1: _Zone-Redundant_
 
 <details>
 

@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "6071389975562170906"
+      "version": "0.31.34.60546",
+      "templateHash": "11003318130532004016"
     },
     "name": "avm/ptn/network/private-link-private-dns-zones",
     "description": "Private Link Private DNS Zones",

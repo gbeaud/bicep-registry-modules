@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "17783194818453553981"
+      "version": "0.31.34.60546",
+      "templateHash": "17734630427251919354"
     },
     "name": "Azure Compute Galleries",
     "description": "This module deploys an Azure Compute Gallery (formerly known as Shared Image Gallery).",
@@ -584,8 +584,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "13081960860160182257"
+              "version": "0.31.34.60546",
+              "templateHash": "11898575653818593354"
             },
             "name": "Compute Galleries Applications",
             "description": "This module deploys an Azure Compute Gallery Application.",
@@ -791,10 +791,7 @@
                 "privacyStatementUri": "[parameters('privacyStatementUri')]",
                 "releaseNoteUri": "[parameters('releaseNoteUri')]",
                 "supportedOSType": "[parameters('supportedOSType')]"
-              },
-              "dependsOn": [
-                "gallery"
-              ]
+              }
             },
             "application_roleAssignments": {
               "copy": {
@@ -945,8 +942,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "5984025187928110337"
+              "version": "0.31.34.60546",
+              "templateHash": "10352627589723051721"
             },
             "name": "Compute Galleries Image Definitions",
             "description": "This module deploys an Azure Compute Gallery Image Definition.",
@@ -1357,10 +1354,7 @@
                   "memory": "[parameters('memory')]"
                 },
                 "releaseNoteUri": "[parameters('releaseNoteUri')]"
-              },
-              "dependsOn": [
-                "gallery"
-              ]
+              }
             },
             "image_roleAssignments": {
               "copy": {

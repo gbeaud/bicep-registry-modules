@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.3.12046",
-      "templateHash": "17022862459992031093"
+      "version": "0.31.34.60546",
+      "templateHash": "427743140267246741"
     },
     "name": "DBforMySQL Flexible Servers",
     "description": "This module deploys a DBforMySQL Flexible Server.",
@@ -602,10 +602,7 @@
       "apiVersion": "2023-02-01",
       "subscriptionId": "[split(coalesce(tryGet(parameters('customerManagedKey'), 'keyVaultResourceId'), '//'), '/')[2]]",
       "resourceGroup": "[split(coalesce(tryGet(parameters('customerManagedKey'), 'keyVaultResourceId'), '////'), '/')[4]]",
-      "name": "[format('{0}/{1}', last(split(coalesce(tryGet(parameters('customerManagedKey'), 'keyVaultResourceId'), 'dummyVault'), '/')), coalesce(tryGet(parameters('customerManagedKey'), 'keyName'), 'dummyKey'))]",
-      "dependsOn": [
-        "cMKKeyVault"
-      ]
+      "name": "[format('{0}/{1}', last(split(coalesce(tryGet(parameters('customerManagedKey'), 'keyVaultResourceId'), 'dummyVault'), '/')), coalesce(tryGet(parameters('customerManagedKey'), 'keyName'), 'dummyKey'))]"
     },
     "cMKGeoKeyVault::cMKKey": {
       "condition": "[and(not(empty(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'))), and(not(empty(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'))), not(empty(tryGet(parameters('customerManagedKeyGeo'), 'keyName')))))]",
@@ -614,10 +611,7 @@
       "apiVersion": "2023-02-01",
       "subscriptionId": "[split(coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'), '//'), '/')[2]]",
       "resourceGroup": "[split(coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'), '////'), '/')[4]]",
-      "name": "[format('{0}/{1}', last(split(coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'), 'dummyVault'), '/')), coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyName'), 'dummyKey'))]",
-      "dependsOn": [
-        "cMKGeoKeyVault"
-      ]
+      "name": "[format('{0}/{1}', last(split(coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyVaultResourceId'), 'dummyVault'), '/')), coalesce(tryGet(parameters('customerManagedKeyGeo'), 'keyName'), 'dummyKey'))]"
     },
     "avmTelemetry": {
       "condition": "[parameters('enableTelemetry')]",
@@ -712,13 +706,7 @@
           "storageSizeGB": "[parameters('storageSizeGB')]"
         },
         "version": "[parameters('version')]"
-      },
-      "dependsOn": [
-        "cMKGeoKeyVault",
-        "cMKGeoUserAssignedIdentity",
-        "cMKKeyVault",
-        "cMKUserAssignedIdentity"
-      ]
+      }
     },
     "flexibleServer_lock": {
       "condition": "[and(not(empty(coalesce(parameters('lock'), createObject()))), not(equals(tryGet(parameters('lock'), 'kind'), 'None')))]",
@@ -830,8 +818,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "15491679806037869848"
+              "version": "0.31.34.60546",
+              "templateHash": "1084000044398377831"
             },
             "name": "DBforMySQL Flexible Server Databases",
             "description": "This module deploys a DBforMySQL Flexible Server Database.",
@@ -938,8 +926,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "10498063087675421166"
+              "version": "0.31.34.60546",
+              "templateHash": "2175639912561055383"
             },
             "name": "DBforMySQL Flexible Server Firewall Rules",
             "description": "This module deploys a DBforMySQL Flexible Server Firewall Rule.",
@@ -1047,8 +1035,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "17380647846007156110"
+              "version": "0.31.34.60546",
+              "templateHash": "14693227777068371311"
             },
             "name": "DBforMySQL Flexible Server Administrators",
             "description": "This module deploys a DBforMySQL Flexible Server Administrator.",

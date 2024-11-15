@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "4783503622444970338"
+      "version": "0.31.34.60546",
+      "templateHash": "3989227844615441418"
     },
     "name": "Redis Cache",
     "description": "This module deploys a Redis Cache.",
@@ -1634,8 +1634,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "10405637679168200939"
+              "version": "0.31.34.60546",
+              "templateHash": "9835781858561318158"
             },
             "name": "Redis Cache Linked Servers",
             "description": "This module connects a primary and secondary Redis Cache together for geo-replication.",
@@ -1691,10 +1691,7 @@
                 "linkedRedisCacheId": "[parameters('linkedRedisCacheResourceId')]",
                 "linkedRedisCacheLocation": "[coalesce(parameters('linkedRedisCacheLocation'), reference('redisCache', '2024-03-01', 'full').location)]",
                 "serverRole": "[parameters('serverRole')]"
-              },
-              "dependsOn": [
-                "redisCache"
-              ]
+              }
             }
           },
           "outputs": {

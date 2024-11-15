@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "4957977967131806012"
+      "version": "0.31.34.60546",
+      "templateHash": "11886925936828806788"
     },
     "name": "Azd Container App Upsert",
     "description": "Creates or updates an existing Azure Container App.\n\n**Note:** This module is not intended for broad, generic use, as it was designed to cater for the requirements of the AZD CLI product. Feature requests and bug fix requests are welcome if they support the development of the AZD CLI but may not be incorporated if they aim to make this module more generic than what it needs to be for its primary use case",

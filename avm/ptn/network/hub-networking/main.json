@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.3.12046",
-      "templateHash": "15226702818499942359"
+      "version": "0.31.34.60546",
+      "templateHash": "9521601012298582663"
     },
     "name": "Hub Networking",
     "description": "This module is designed to simplify the creation of multi-region hub networks in Azure. It will create a number of virtual networks and subnets, and optionally peer them together in a mesh topology with routing.",
@@ -703,8 +703,6 @@
       },
       "dependsOn": [
         "hubVirtualNetwork",
-        "[format('hubVirtualNetworkPeer_local[{0}]', copyIndex())]",
-        "[format('hubVirtualNetworkPeer_local[{0}]', copyIndex())]",
         "[format('hubVirtualNetworkPeer_remote[{0}]', copyIndex())]"
       ]
     },
@@ -723,8 +721,6 @@
       },
       "dependsOn": [
         "[format('hubAzureFirewall[{0}]', copyIndex())]",
-        "[format('hubVirtualNetworkPeer_local[{0}]', copyIndex())]",
-        "[format('hubVirtualNetworkPeer_local[{0}]', copyIndex())]",
         "[format('hubVirtualNetworkPeer_remote[{0}]', copyIndex())]",
         "hubVirtualNetworkPeering"
       ]
@@ -2345,8 +2341,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "5568850224456572684"
+              "version": "0.31.34.60546",
+              "templateHash": "16169888675962774968"
             },
             "name": "Virtual Networks",
             "description": "This module deploys a Virtual Network.",
@@ -6473,8 +6469,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "16563975082451649304"
+              "version": "0.31.34.60546",
+              "templateHash": "11237257713538877171"
             },
             "name": "Existing Virtual Network Subnets",
             "description": "This module retrieves an existing Virtual Network Subnet.",
@@ -6556,8 +6552,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.3.12046",
-              "templateHash": "10294962787410461549"
+              "version": "0.31.34.60546",
+              "templateHash": "2696887230414175123"
             },
             "name": "Virtual Network Subnets",
             "description": "This module deploys a Virtual Network Subnet.",
@@ -6792,10 +6788,7 @@
                 "applicationGatewayIPConfigurations": "[parameters('applicationGatewayIPConfigurations')]",
                 "ipAllocations": "[parameters('ipAllocations')]",
                 "serviceEndpointPolicies": "[parameters('serviceEndpointPolicies')]"
-              },
-              "dependsOn": [
-                "virtualNetwork"
-              ]
+              }
             },
             "subnet_roleAssignments": {
               "copy": {

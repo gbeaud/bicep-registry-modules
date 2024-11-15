@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.29.47.4906",
-      "templateHash": "4688887403489577314"
+      "version": "0.31.34.60546",
+      "templateHash": "17324220765520950377"
     },
     "name": "Availability Sets",
     "description": "This module deploys an Availability Set.",
