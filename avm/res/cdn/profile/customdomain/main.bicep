@@ -37,12 +37,6 @@ param minimumTlsVersion string = 'TLS12'
 @description('Optional. The name of the secret. ie. subs/rg/profile/secret.')
 param secretName string = ''
 
-// @allowed([
-//   'Customized'
-//   'TLS10_2019'
-//   'TLS12_2022'
-//   'TLS12_2023'
-// ])
 @description('Optional. The cipher suite set type that will be used for Https')
 param cipherSuiteSetType string = ''
 
@@ -75,8 +69,8 @@ resource customDomain 'Microsoft.Cdn/profiles/customDomains@2025-04-15' = {
       : null
     tlsSettings: {
       certificateType: certificateType
-      cipherSuiteSetType: cipherSuiteSetType
-      customizedCipherSuiteSet: customizedCipherSuiteSet
+      cipherSuiteSetType: !empty(cipherSuiteSetType) ? cipherSuiteSetType : null
+      customizedCipherSuiteSet: !empty(customizedCipherSuiteSet) ? customizedCipherSuiteSet : null
       minimumTlsVersion: minimumTlsVersion
       secret: !(empty(secretName))
         ? {
@@ -135,6 +129,12 @@ type customDomainType = {
 
   @description('Optional. Extended properties.')
   extendedProperties: object?
+
+  @description('Optional. The cipher suite set type that will be used for Https.')
+  cipherSuiteSetType: string?
+
+  @description('Optional. The customized cipher suite set that will be used for Https.')
+  customizedCipherSuiteSet: object?
 }
 
 @export()
