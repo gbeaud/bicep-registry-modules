@@ -37,17 +37,17 @@ param minimumTlsVersion string = 'TLS12'
 @description('Optional. The name of the secret. ie. subs/rg/profile/secret.')
 param secretName string = ''
 
-@allowed([
-  'Customized'
-  'TLS10_2019'
-  'TLS12_2022'
-  'TLS12_2023'
-])
+// @allowed([
+//   'Customized'
+//   'TLS10_2019'
+//   'TLS12_2022'
+//   'TLS12_2023'
+// ])
 @description('Optional. The cipher suite set type that will be used for Https')
-param cipherSuiteSetType string
+param cipherSuiteSetType string = ''
 
 @description('Optional. The customized cipher suite set that will be used for Https. Required if cipherSuiteSetType is Customized.')
-param customizedCipherSuiteSet object
+param customizedCipherSuiteSet object = {}
 
 resource profile 'Microsoft.Cdn/profiles@2025-04-15' existing = {
   name: profileName
