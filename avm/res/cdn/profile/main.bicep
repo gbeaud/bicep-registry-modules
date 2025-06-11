@@ -255,6 +255,8 @@ module profile_customDomains 'customdomain/main.bicep' = [
       minimumTlsVersion: customDomain.?minimumTlsVersion
       preValidatedCustomDomainResourceId: customDomain.?preValidatedCustomDomainResourceId
       secretName: customDomain.?secretName
+      customizedCipherSuiteSet: customDomain.?customizedCipherSuiteSet
+      cipherSuiteSetType: customDomain.?cipherSuiteSetType
     }
   }
 ]

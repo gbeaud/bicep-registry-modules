@@ -53,6 +53,14 @@ module testDeployment '../../../main.bicep' = [
           name: 'dep-${namePrefix}-test-${serviceShort}-custom-domain'
           hostName: 'dep-${namePrefix}-test-${serviceShort}-custom-domain.azurewebsites.net'
           certificateType: 'ManagedCertificate'
+          // cipherSuiteSetType: 'TLS12_2023'
+          // customizedCipherSuiteSet: {
+          //   cipherSuites: [
+          //     'TLS_AES_256_GCM_SHA384'
+          //     'TLS_CHACHA20_POLY1305_SHA256'
+          //     'TLS_AES_128_GCM_SHA256'
+          //   ]
+          // }
         }
         {
           name: 'dep-${namePrefix}-test2-${serviceShort}-custom-domain'
