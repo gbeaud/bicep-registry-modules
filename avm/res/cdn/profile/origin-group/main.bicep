@@ -53,7 +53,8 @@ module originGroup_origins 'origin/main.bicep' = [
       enforceCertificateNameCheck: origin.?enforceCertificateNameCheck
       httpPort: origin.?httpPort
       httpsPort: origin.?httpsPort
-      originHostHeader: origin.?originHostHeader ?? origin.hostName
+      // Uses the !empty() function which returns false for both null and empty string values, ensuring that in either case, the origin.hostName will be used as the fallback.
+      originHostHeader: !empty(origin.?originHostHeader) ? origin.originHostHeader : origin.hostName
       priority: origin.?priority
       weight: origin.?weight
       sharedPrivateLinkResource: origin.?sharedPrivateLinkResource
