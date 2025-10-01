@@ -111,7 +111,6 @@ The host header value sent to the origin with each request. If you leave this bl
 
 - Required: No
 - Type: string
-- Default: `''`
 
 ### Parameter: `priority`
 

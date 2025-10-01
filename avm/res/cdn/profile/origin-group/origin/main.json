@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.36.1.42791",
-      "templateHash": "3654686564131775119"
+      "version": "0.37.4.10188",
+      "templateHash": "14492433217499774943"
     },
     "name": "CDN Profiles Origin",
     "description": "This module deploys a CDN Profile Origin."
@@ -153,7 +153,7 @@
     },
     "originHostHeader": {
       "type": "string",
-      "defaultValue": "",
+      "nullable": true,
       "metadata": {
         "description": "Optional. The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint."
       }
@@ -197,17 +197,7 @@
       "type": "Microsoft.Cdn/profiles/originGroups/origins",
       "apiVersion": "2025-04-15",
       "name": "[format('{0}/{1}/{2}', parameters('profileName'), parameters('originGroupName'), parameters('name'))]",
-      "properties": {
-        "enabledState": "[parameters('enabledState')]",
-        "enforceCertificateNameCheck": "[parameters('enforceCertificateNameCheck')]",
-        "hostName": "[parameters('hostName')]",
-        "httpPort": "[parameters('httpPort')]",
-        "httpsPort": "[parameters('httpsPort')]",
-        "originHostHeader": "[parameters('originHostHeader')]",
-        "priority": "[parameters('priority')]",
-        "sharedPrivateLinkResource": "[parameters('sharedPrivateLinkResource')]",
-        "weight": "[parameters('weight')]"
-      }
+      "properties": "[union(createObject('enabledState', parameters('enabledState'), 'enforceCertificateNameCheck', parameters('enforceCertificateNameCheck'), 'hostName', parameters('hostName'), 'httpPort', parameters('httpPort'), 'httpsPort', parameters('httpsPort'), 'priority', parameters('priority'), 'sharedPrivateLinkResource', parameters('sharedPrivateLinkResource'), 'weight', parameters('weight')), if(not(equals(parameters('originHostHeader'), null())), createObject('originHostHeader', parameters('originHostHeader')), createObject()))]"
     }
   },
   "outputs": {
