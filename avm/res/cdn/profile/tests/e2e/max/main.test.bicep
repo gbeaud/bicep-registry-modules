@@ -93,7 +93,7 @@ module testDeployment '../../../main.bicep' = [
         Owner: 'TestTeam'
       }
 
-      // Custom Domains with simplified configurations (FIXED)
+      // Custom Domains with simplified configurations
       customDomains: [
         {
           name: 'dep-${namePrefix}-test1-${serviceShort}-custom-domain'
@@ -129,7 +129,7 @@ module testDeployment '../../../main.bicep' = [
         }
       ]
 
-      // Origin Groups with realistic hostnames (FIXED)
+      // Origin Groups with realistic hostnames
       originGroups: [
         {
           name: 'dep-${namePrefix}-test-${serviceShort}-origin-group-1'
@@ -156,6 +156,20 @@ module testDeployment '../../../main.bicep' = [
               weight: 1000
               enabledState: 'Enabled'
               enforceCertificateNameCheck: true
+              // Test case: originHostHeader explicitly set to a custom value
+              originHostHeader: 'custom-host-header.example.com'
+            }
+            {
+              name: 'dep-${namePrefix}-test-${serviceShort}-origin-1b'
+              hostName: '${nestedDependencies.outputs.storageAccountName}.blob.${environment().suffixes.storage}'
+              httpPort: 80
+              httpsPort: 443
+              priority: 2
+              weight: 500
+              enabledState: 'Enabled'
+              enforceCertificateNameCheck: true
+              // Test case: originHostHeader is null (not provided) - should fallback to hostName
+              // originHostHeader: null  // This will be omitted entirely
             }
           ]
         }
@@ -178,6 +192,32 @@ module testDeployment '../../../main.bicep' = [
               weight: 1000
               enabledState: 'Enabled'
               enforceCertificateNameCheck: true
+              // Test case: originHostHeader is an empty string - should fallback to hostName
+              originHostHeader: ''
+            }
+          ]
+        }
+        {
+          name: 'dep-${namePrefix}-test-${serviceShort}-origin-group-3'
+          loadBalancingSettings: {
+            additionalLatencyInMilliseconds: 75
+            sampleSize: 4
+            successfulSamplesRequired: 3
+          }
+          sessionAffinityState: 'Disabled'
+          trafficRestorationTimeToHealedOrNewEndpointsInMinutes: 10
+          origins: [
+            {
+              name: 'dep-${namePrefix}-test-${serviceShort}-origin-3'
+              hostName: '${nestedDependencies.outputs.storageAccountName}.blob.${environment().suffixes.storage}'
+              httpPort: 80
+              httpsPort: 443
+              priority: 1
+              weight: 1000
+              enabledState: 'Enabled'
+              enforceCertificateNameCheck: true
+              // Test case: originHostHeader explicitly set to null
+              originHostHeader: null
             }
           ]
         }
@@ -257,6 +297,55 @@ module testDeployment '../../../main.bicep' = [
                   name: 'dep${namePrefix}test${serviceShort}ruleset1'
                 }
               ]
+            }
+            {
+              name: 'dep-${namePrefix}-test-${serviceShort}-afd-route-2'
+              originGroupName: 'dep-${namePrefix}-test-${serviceShort}-origin-group-2'
+              customDomainNames: [
+                'dep-${namePrefix}-test2-${serviceShort}-custom-domain'
+              ]
+              enabledState: 'Enabled'
+              forwardingProtocol: 'MatchRequest'
+              httpsRedirect: 'Enabled'
+              linkToDefaultDomain: 'Enabled'
+              patternsToMatch: ['/empty-header/*']
+              supportedProtocols: ['Http', 'Https']
+              cacheConfiguration: {
+                queryStringCachingBehavior: 'IgnoreQueryString'
+                queryParameters: ''
+                compressionSettings: {
+                  contentTypesToCompress: [
+                    'application/json'
+                    'text/css'
+                  ]
+                  isCompressionEnabled: true
+                }
+              }
+              ruleSets: []
+            }
+            {
+              name: 'dep-${namePrefix}-test-${serviceShort}-afd-route-3'
+              originGroupName: 'dep-${namePrefix}-test-${serviceShort}-origin-group-3'
+              customDomainNames: [
+                'dep-${namePrefix}-test3-${serviceShort}-custom-domain'
+              ]
+              enabledState: 'Enabled'
+              forwardingProtocol: 'MatchRequest'
+              httpsRedirect: 'Enabled'
+              linkToDefaultDomain: 'Enabled'
+              patternsToMatch: ['/null-header/*']
+              supportedProtocols: ['Http', 'Https']
+              cacheConfiguration: {
+                queryStringCachingBehavior: 'IgnoreQueryString'
+                queryParameters: ''
+                compressionSettings: {
+                  contentTypesToCompress: [
+                    'application/json'
+                  ]
+                  isCompressionEnabled: true
+                }
+              }
+              ruleSets: []
             }
           ]
         }

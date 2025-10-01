@@ -90,7 +90,6 @@ module testDeployment '../../../main.bicep' = [
         BackupRequired: 'Yes'
         MonitoringRequired: 'Yes'
         'WAF-Pillar': 'All'
-        // 'Last-Review': utcNow('yyyy-MM-dd')
       }
 
       // WAF: Security - Custom domains with strong TLS configuration
