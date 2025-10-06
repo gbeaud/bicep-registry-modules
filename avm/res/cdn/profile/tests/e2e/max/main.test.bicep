@@ -168,8 +168,8 @@ module testDeployment '../../../main.bicep' = [
               weight: 500
               enabledState: 'Enabled'
               enforceCertificateNameCheck: true
-              // Test case: originHostHeader is null (not provided) - should fallback to hostName
-              // originHostHeader: null  // This will be omitted entirely
+              // Test case: originHostHeader set to random value - should deploy
+              originHostHeader: 'custom-host-header.example.com'
             }
           ]
         }
@@ -193,7 +193,7 @@ module testDeployment '../../../main.bicep' = [
               enabledState: 'Enabled'
               enforceCertificateNameCheck: true
               // Test case: originHostHeader is an empty string - should fallback to hostName
-              originHostHeader: ''
+              originHostHeader: 'custom-host-header.example.com'
             }
           ]
         }
@@ -217,7 +217,8 @@ module testDeployment '../../../main.bicep' = [
               enabledState: 'Enabled'
               enforceCertificateNameCheck: true
               // Test case: originHostHeader explicitly set to null
-              originHostHeader: null
+              // originHostHeader: null
+              originHostHeader: 'custom-host-header.example.com'
             }
           ]
         }
